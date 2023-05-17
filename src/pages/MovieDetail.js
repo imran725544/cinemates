@@ -6,7 +6,7 @@ import Backup from "../assets/images/backup.png";
 export const MovieDetail = () => {
   const parms = useParams();
   const [movie, setMovie] = useState({});
-  const Pagetitle = useTitle(movie.title);
+       useTitle(movie.title);
   const image = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
     : Backup;
@@ -19,7 +19,7 @@ export const MovieDetail = () => {
       setMovie(json);
     }
     fetchMovie();
-  }, []);
+  }, [parms.id]);
   
   return (
     <>
@@ -89,7 +89,7 @@ export const MovieDetail = () => {
               <a
                 href={`https://www.imdb.com/title/${movie.imdb_id}`}
                 target="_blank"
-                rel="norefferrer"
+                rel="noopener noreferrer"
               >
                 {movie.imdb_id}
               </a>
